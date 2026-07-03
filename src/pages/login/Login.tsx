@@ -1,3 +1,5 @@
+import InputField from "../../components/InputField";
+
 export default function Login() {
   return (
     <div className="min-h-screen grid grid-cols-2">
@@ -12,6 +14,18 @@ export default function Login() {
           {/* Image and quote will go here */}
         </div>
       </div>
+      <InputField
+        label="Email"
+        type="email"
+        placeholder="Enter your email"
+        icon={<span>📧</span>}
+      />
+      <InputField
+        label="Password"
+        type="password"
+        placeholder="Enter your password"
+        icon={<span>🔒</span>}
+      />
     </div>
   );
 }
