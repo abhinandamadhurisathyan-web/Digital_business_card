@@ -1,1 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
+
+@theme {
+  /* Font */
+  --font-sans: "Poppins", sans-serif;
+
+  /* Brand Colors */
+  --color-primary: #1B5E20;
+  --color-primary-light: #2E7D32;
+  --color-primary-dark: #154A19;
+
+  /* Surfaces */
+  --color-background: #FCF8F8;
+  --color-surface: #FFFFFF;
+  --color-surface-container: #F6F3F2;
+
+  /* Text */
+  --color-text: #1C1B1B;
+  --color-text-secondary: #5F6368;
+
+  /* Functional */
+  --color-secondary: #4A634E;
+  --color-tertiary: #51606F;
+  --color-error: #BA1A1A;
+
+  /* Borders */
+  --color-border: #D8D8D8;
+  --color-border-light: #ECECEC;
+
+  /* Radius */
+  --radius-card: 1rem;
+  --radius-button: .75rem;
+
+  /* Shadows */
+  --shadow-card: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+/* Base styles */
+@layer base {
+  * {
+    @apply box-border m-0 p-0;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-text font-sans antialiased;
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+
+  img {
+    @apply max-w-full block;
+  }
+
+  a {
+    @apply no-underline;
+  }
+}
+
+/* Reusable Components */
+@layer components {
+
+  .card {
+    @apply bg-surface rounded-card border border-border-light shadow-card;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white px-5 py-3 rounded-button font-semibold transition-all duration-300 hover:bg-primary-light;
+  }
+
+  .btn-secondary {
+    @apply bg-white border border-primary text-primary px-5 py-3 rounded-button font-semibold transition-all duration-300 hover:bg-surface-container;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold text-text;
+  }
+
+  .section-subtitle {
+    @apply text-text-secondary;
+  }
+}
