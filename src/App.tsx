@@ -1,14 +1,15 @@
 import './App.css'
 import Login from './pages/login/Login'
+import Sample from './pages/login/Sample'
 
 function App() {
   
 
   return (
     <>
-      <div className="min-h-screen flex items-center justify-center">
-      <Login />
-    </div>
+     <p>
+      Dont Touch Here
+     </p>
     </>
   )
 }
