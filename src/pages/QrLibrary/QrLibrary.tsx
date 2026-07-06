@@ -11,7 +11,10 @@ interface Card {
   generatedDate: string;
 }
 
-const cards: Card[] = [
+export default function QrLibrary() {
+  const [selectedId, setSelectedId] = useState(1);
+
+  const cards: Card[] = [
     {
       id: 1,
       title: "Standard Card",
@@ -54,9 +57,6 @@ const cards: Card[] = [
     },
   ];
 
-export default function QrLibrary() {
-  const [selectedId, setSelectedId] = useState(1);
-
   const orderedCards = useMemo(() => {
     const selected = cards.find((card) => card.id === selectedId);
 
@@ -96,6 +96,8 @@ export default function QrLibrary() {
             previewImage={Qrimage}
             active={card.id === selectedId}
             onSelect={() => setSelectedId(card.id)}
+            
+            
           />
         ))}
       </div>

@@ -59,7 +59,7 @@ export default function BusinessCard({ isFlipped }: BusinessCardProps) {
         </div>
 
         {/* ---- ABOUT TARENTO: hidden on mobile, shown from md: up ---- */}
-        <div className="hidden md:flex md:flex-1 p-4 sm:p-6 flex-col md:border-l border-gray-100">
+        <div className="hidden md:flex md:flex-1 p-4 mt-40 sm:p-6 flex-col ">
           <h3 className="text-gray-700 font-semibold text-sm md:text-base">
             About Tarento
           </h3>
@@ -103,6 +103,8 @@ export default function BusinessCard({ isFlipped }: BusinessCardProps) {
               With a presence across four continents, we empower organizations through
               transformative digital strategy, robust engineering, and human-centric
               experience design. Our mission is to solve complex global challenges by
+              building resilient, scalable, and empathetic technology landscapes.igital strategy, robust engineering, and human-centric
+              experience design. Our mission is to solve complex global challenges by
               building resilient, scalable, and empathetic technology landscapes.
             </p>
 
@@ -126,7 +128,7 @@ export default function BusinessCard({ isFlipped }: BusinessCardProps) {
             <button className="border border-gray-300 hover:bg-gray-50 rounded-lg py-2.5 sm:py-3 font-medium text-sm sm:text-base">
               🔗 Know More
             </button>
-            <button className="bg-green-100 hover:bg-green-200 text-green-700 rounded-lg py-2.5 sm:py-3 font-medium text-sm sm:text-base mt-2 md:mt-4">
+            <button className="bg-green-100 hover:bg-green-200 text-green-700 rounded-lg py-2.5 sm:py-3 font-medium text-sm sm:text-base mt-2 md:mt-20">
               📞 Contact Sales
             </button>
           </div>

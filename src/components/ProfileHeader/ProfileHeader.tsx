@@ -7,15 +7,15 @@ export default function ProfileHeader({
   status,
 }: ProfileHeaderProps) {
   return (
-    <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between mb-8">
+    <div className="flex flex-col gap-4  lg:items-start lg:justify-between mb-8">
       <div>
         <h1 className="text-4xl font-bold text-primary">
           {title}
         </h1>
 
-        <p className="mt-2 text-text-secondary">
+        {/* <p className="mt-2 text-text-secondary">
           {subtitle}
-        </p>
+        </p> */}
       </div>
 
       <div className="flex items-center gap-3">
