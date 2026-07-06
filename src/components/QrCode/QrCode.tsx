@@ -47,41 +47,44 @@ export default function QRCard({
 
   return (
 
-    <div className="card w-full max-w-md p-8">
+    <div className="card mx-auto w-full p-6 sm:p-8">
 
       {/* Downloadable Content */}
-      <div className="overflow-hidden rounded-[1.5rem] p-8" ref={cardRef}>
-        <div className="flex flex-col items-center">
+      <div className="overflow-hidden rounded-[1.5rem] p-6 sm:p-8" ref={cardRef}>
+        <div className="flex flex-col items-center gap-4">
           <div className="rounded-xl border-2 border-primary p-3 bg-white">
             <img
               src={qrUrl || QrImage}
               alt="QR Code"
-              className="w-60 h-60 object-contain"
+              className="w-52 h-52 object-contain"
             />
           </div>
 
-          <h2 className="mt-6 text-3xl font-bold text-primary text-center">
+          <h2 className="text-2xl font-bold text-primary text-center sm:text-3xl">
             {employeeName}
           </h2>
 
-          <p className="mt-1 text-xs uppercase tracking-wider text-text-secondary text-center">
+          <p className="text-[11px] uppercase tracking-wider text-text-secondary text-center sm:text-xs">
             {designation}
           </p>
         </div>
       </div>
 
       {/* Buttons (Not Included in Download) */}
-      <div className="flex justify-center gap-4 mt-8" data-download-exclude>
+      <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:justify-center" data-download-exclude>
         <Button
           text="Download"
           icon={<Download size={20} />}
           onClick={handleDownload}
+          size="full"
         />
 
         <Button
           text="Email"
           icon={<Mail size={20} />}
           onClick={onEmail}
+          variant="secondary"
+          size="full"
         />
       </div>
 

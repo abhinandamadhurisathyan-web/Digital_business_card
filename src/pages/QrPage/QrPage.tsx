@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import QRCode from "qrcode";
 import QRCard from "../../components/QrCode/QrCode";
 import ProfileLinkCard from "../../components/ProfileLinkCard/ProfileLinkCard";
@@ -16,8 +17,6 @@ export default function QRPage() {
   const [company, setCompany] = useState("");
   const [qrTitle, setQrTitle] = useState("");
   const [qrUrl, setQrUrl] = useState<string>("");
-  const [qrStatus, setQrStatus] = useState<string>("Generating QR...");
-  const [generatedLink, setGeneratedLink] = useState<string>("https://tarento.com/profile/alex-rivera");
 
   const defaultQrValue = "https://tarento.com/profile/alex-rivera";
 
@@ -30,46 +29,49 @@ export default function QRPage() {
     window.location.href = `mailto:${employeeEmail}?subject=${subject}&body=${body}`;
   };
 
-  const generateQrValue = () => {
+  const generateQrValue = (forceRefresh = false) => {
     const params = new URLSearchParams();
 
     if (ibu) params.set("ibu", ibu);
     if (industry) params.set("industry", industry);
     if (company) params.set("company", company);
     if (qrTitle) params.set("title", qrTitle);
+    if (forceRefresh) params.set("refresh", String(Date.now()));
 
     return `${defaultQrValue}${params.toString() ? `?${params.toString()}` : ""}`;
   };
 
-  const generateQr = async () => {
-    const value = generateQrValue();
-    setQrStatus("Generating QR...");
+  const generateQr = async (showNotification = true) => {
+    const value = generateQrValue(showNotification);
     try {
       const dataUrl = await QRCode.toDataURL(value, {
         margin: 1,
         width: 260,
       });
       setQrUrl(dataUrl);
-      setGeneratedLink(value);
-      setQrStatus("New QR generated successfully");
+      if (showNotification) {
+        toast.success("New QR generated successfully");
+      }
     } catch (error) {
       console.error("Error generating QR code:", error);
-      setQrStatus("Failed to generate QR. Try again.");
+      if (showNotification) {
+        toast.error("Failed to generate QR. Please try again.");
+      }
     }
   };
 
   useEffect(() => {
-    generateQr();
+    generateQr(false);
   }, []);
 
   return (
-    <main className="flex-1 p-6 lg:p-10">
+    <main className="flex-1 sm:px-1 sm:py-1 lg:px-10 lg:py-8">
       <PageHeader title="My Digital Identity" />
 
-      <div className="grid lg:grid-cols-[430px_minmax(0,1fr)] gap-6 items-start">
+      <div className="mx-auto grid w-full max-w-screen-xl grid-cols-1 gap-6 justify-items-center xl:grid-cols-[minmax(300px,38%)_minmax(0,1fr)] xl:gap-12 xl:justify-items-stretch items-start">
         {/* Left */}
-        <div className="w-full max-w-md space-y-6">
-          <div id="qr-card">
+        <div className="space-y-5 w-full">
+          <div id="qr-card" className="w-full">
             <QRCard
               employeeName={employeeName}
               designation="Senior Technical Consultant"
@@ -78,11 +80,13 @@ export default function QRPage() {
             />
           </div>
 
-          <ProfileLinkCard link="tarento.com/profile/alex-rivera" />
+          <div className="w-full">
+            <ProfileLinkCard link="tarento.com/profile/alex-rivera" />
+          </div>
         </div>
 
         {/* Right */}
-        <div className="card p-8 h-full">
+        <div className="card w-full max-w-[640px] p-6 sm:p-8 h-full">
           <h2 className="text-3xl font-bold text-primary mb-8">
             Customize Your QR
           </h2>
@@ -124,9 +128,7 @@ export default function QRPage() {
             onChange={(e) => setQrTitle(e.target.value)}
           />
 
-          <div className="mt-6 rounded-lg border border-dashed border-primary/40 bg-primary/5 p-4 text-sm text-primary">
-            {qrStatus}
-          </div>
+         
 
 
           <div className="mt-8">
