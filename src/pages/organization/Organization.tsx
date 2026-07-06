@@ -91,7 +91,7 @@ function Organization() {
               <p className="mt-1 text-sm text-text-secondary">Update your organization details. These will be visible on employee cards.</p>
             </div>
 
-            <div className="space-y-4">
+            <div className="flex flex-1 flex-col gap-4">
               <div className="grid gap-4 md:grid-cols-[118px_1fr] md:items-start">
                 <label className="pt-2 text-sm text-text-secondary">Company Logo</label>
 
@@ -177,7 +177,7 @@ function Organization() {
                 );
               })}
 
-              <button type="button" className="btn-primary mt-2 flex w-full items-center justify-center gap-2 rounded-md py-2.5 text-sm font-medium">
+              <button type="button" className="btn-primary mt-auto flex w-full items-center justify-center gap-2 rounded-md py-2.5 text-sm font-medium">
                 <Save className="h-4 w-4" />
                 Save Details
               </button>
@@ -188,7 +188,7 @@ function Organization() {
             <div className="card flex flex-1 flex-col p-5 sm:p-6">
               <p className="text-lg font-semibold text-text">Company Card Details</p>
 
-              <div className="mt-4 space-y-4">
+              <div className="mt-4 flex flex-1 flex-col gap-4">
                 <div>
                   <label className="mb-2 block text-sm text-text-secondary">Category</label>
                   <select
@@ -259,7 +259,7 @@ function Organization() {
                   />
                 </div>
 
-                <button type="button" className="btn-primary flex w-full items-center justify-center gap-2 rounded-md py-2.5 text-sm font-medium">
+                <button type="button" className="btn-primary mt-auto flex w-full items-center justify-center gap-2 rounded-md py-2.5 text-sm font-medium">
                   <Save className="h-4 w-4" />
                   Save Details
                 </button>
@@ -269,7 +269,7 @@ function Organization() {
             <div className="card flex flex-1 flex-col p-5 sm:p-6">
               <p className="text-lg font-semibold text-text">Links & Contact</p>
 
-              <div className="mt-4 space-y-4">
+              <div className="mt-4 flex flex-1 flex-col gap-4">
                 <div>
                   <label className="mb-2 block text-sm text-text-secondary">LinkedIn Profile</label>
                   <input
@@ -288,7 +288,7 @@ function Organization() {
                   />
                 </div>
 
-                <button type="button" className="btn-primary flex w-full items-center justify-center gap-2 rounded-md py-2.5 text-sm font-medium">
+                <button type="button" className="btn-primary mt-auto flex w-full items-center justify-center gap-2 rounded-md py-2.5 text-sm font-medium">
                   <Save className="h-4 w-4" />
                   Save Links
                 </button>
