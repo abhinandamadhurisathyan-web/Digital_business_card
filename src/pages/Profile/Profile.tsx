@@ -15,12 +15,11 @@ export default function Profile() {
 
   const handleSave = () => {
     // TODO: Call API here
-
     setEditing(false);
   };
 
   return (
-    <>
+    <div className="h-full overflow-y-auto  pb-8">
       {/* Header */}
       <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
         <ProfileHeader
@@ -94,6 +93,6 @@ export default function Profile() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
