@@ -19,7 +19,7 @@ export default function Profile() {
   };
 
   return (
-    <div className="h-full overflow-y-auto  pb-8">
+    <div className="h-full overflow-y-auto overflow-x-hidden scrollbar-hide">
       {/* Header */}
       <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
         <ProfileHeader
