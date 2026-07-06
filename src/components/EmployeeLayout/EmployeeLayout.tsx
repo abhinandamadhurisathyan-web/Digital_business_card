@@ -6,11 +6,15 @@ import TopBar from "../TopBar/TopBar";
 import profilePic from "./../../assets/profilePic.jpg";
 import { getAdminSession } from "../../lib/adminSession";
 
-import profilePic from "../../assets/profilePic.jpg";
+
 
 export default function EmployeeLayout() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const isAdmin = Boolean(getAdminSession());
+  const location = useLocation();
+
+const isScrollable =
+  location.pathname !== "/profile";
 
   return (
     <div className="flex h-screen overflow-hidden bg-background">

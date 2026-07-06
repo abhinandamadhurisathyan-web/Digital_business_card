@@ -2,13 +2,7 @@
 import { Plus } from "lucide-react";
 import { useNavigate } from "react-router";
 
-interface CreateQRCardProps {
-  onClick?: () => void;
-}
-
-export default function CreateQRCard({
-  
-}: CreateQRCardProps) {
+export default function CreateQRCard() {
     const navigate = useNavigate();
 
     const handleClick = () => {

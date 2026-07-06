@@ -34,6 +34,7 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/qr-code" element={<QrPage />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/my-card" element={<Mycard />} />
+          <Route path="/analytics" element={<Analytics />} />
           <Route path="/qr-library" element={<QrLibrary />} />
         </Route>
 
@@ -53,7 +54,6 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/qr-code" element={<QrPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/analytics" element={<Analytics />} />
         <Route
           path="/organization"
           element={

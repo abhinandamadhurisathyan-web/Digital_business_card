@@ -1,8 +1,6 @@
 import { useState, type PointerEvent } from "react";
 import { ChevronRight, Eye, Share2, TrendingUp } from "lucide-react";
 
-import EmployeeLayout from "../../components/EmployeeLayout/EmployeeLayout";
-
 type TimeRange = "Today" | "Week" | "Month" | "Year" | "All Time";
 
 type ActivityType = "view" | "share";
@@ -333,7 +331,6 @@ function Analytics() {
   };
 
   return (
-    <EmployeeLayout>
       <div className="mx-auto max-w-[1320px] space-y-4">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
@@ -479,7 +476,6 @@ function Analytics() {
           </div>
         </section>
       </div>
-    </EmployeeLayout>
   );
 }
 
