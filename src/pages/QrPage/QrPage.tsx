@@ -1,33 +1,14 @@
-import Sidebar from "../../components/sideBar/Sidebar";
 import QRCard from "../../components/QrCode/QrCode";
 import ProfileLinkCard from "../../components/ProfileLinkCard/ProfileLinkCard";
 import SelectField from "../../components/SelectField/SelectField";
 import InputField from "../../components/InputField";
 import Button from "../../components/SubmitButton/SubmitButton";
-import TopBar from "../../components/TopBar/TopBar";
-import profilePic from "../../assets/profilePic.jpg";
-import { useState } from "react";
+import EmployeeLayout from "../../components/EmployeeLayout/EmployeeLayout";
 
 export default function QRPage() {
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
-
   return (
-    <div className="flex min-h-screen bg-background">
-
-      <Sidebar
-        isOpen={isSidebarOpen}
-        onClose={() => setSidebarOpen(false)}
-      />
-    <div className="flex-1 flex flex-col">
-
-        <TopBar
-            employeeName="Elena Thorne"
-            designation="Enterprise Admin"
-            profileImage={profilePic}
-            onMenuClick={() => setSidebarOpen(true)}
-        />
-<main className="flex-1 p-6 pt-20 lg:p-10">
-        <div className="grid lg:grid-cols-2 gap-5">
+    <EmployeeLayout>
+      <div className="grid gap-5 lg:grid-cols-2">
 
           {/* Left */}
 
@@ -94,10 +75,6 @@ export default function QRPage() {
           </div>
 
         </div>
-
-      </main>
-
-    </div>
-    </div>
+    </EmployeeLayout>
   );
 }

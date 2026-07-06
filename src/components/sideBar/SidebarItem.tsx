@@ -3,16 +3,19 @@ import { type SidebarItemType } from "../../types/sidebar";
 
 interface SidebarItemProps {
   item: SidebarItemType;
+  onClick?: () => void;
 }
 
 export default function SidebarItem({
   item,
+  onClick,
 }: SidebarItemProps) {
   const Icon = item.icon;
 
   return (
     <NavLink
       to={item.path}
+      onClick={onClick}
       className={({ isActive }) =>
         `
         flex

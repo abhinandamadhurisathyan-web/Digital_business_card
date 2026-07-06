@@ -1,17 +1,7 @@
-import './App.css'
-import Login from './pages/login/Login'
-import Sample from './pages/login/Sample'
+import "./App.css";
 
 function App() {
-  
-
-  return (
-    <>
-     <p>
-      Dont Touch Here
-     </p>
-    </>
-  )
+  return null;
 }
 
-export default App
+export default App;

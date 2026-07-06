@@ -1,12 +1,26 @@
 
+import { useState } from "react";
 import { Mail, Lock } from "lucide-react";
 
 import InputField from "../../components/InputField";
 import Button from "../../components/SubmitButton/SubmitButton";
 import { Link, useNavigate } from "react-router-dom";
+import { isAdminEmail, setAdminSession } from "../../lib/adminSession";
 
 export default function Login() {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+
+  function handleSignIn() {
+    if (isAdminEmail(email)) {
+      setAdminSession(email);
+      navigate("/dashboard");
+      return;
+    }
+
+    navigate("/qr-code");
+  }
+
   return (
     <div className="min-h-screen grid lg:grid-cols-2">
 
@@ -29,6 +43,8 @@ export default function Login() {
           <InputField
             label="Email Address"
             placeholder="name@tarento.com"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
             icon={<Mail size={18} />}
           />
 
@@ -55,7 +71,7 @@ export default function Login() {
 
           </div>
 
-          <Button onClick={() => navigate("/qr-code")} text="Sign In" />
+          <Button onClick={handleSignIn} text="Sign In" />
           <p className="text-center mt-10 text-gray-500">
 
             Don't have an account?

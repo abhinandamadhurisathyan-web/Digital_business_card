@@ -2,17 +2,22 @@ import { X } from "lucide-react";
 
 import SidebarItem from "./SidebarItem";
 import tarento_logo from "../../assets/tarento_logo.svg";
-import { sidebarItems, logoutItem } from "./sideBarData";
+import { adminSidebarItems, logoutItem, sidebarItems } from "./sideBarData";
+import { clearAdminSession } from "../../lib/adminSession";
 
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
+  variant?: "employee" | "admin";
 }
 
 export default function Sidebar({
   isOpen,
   onClose,
+  variant = "employee",
 }: SidebarProps) {
+  const navigationItems = variant === "admin" ? adminSidebarItems : sidebarItems;
+
   return (
     <>
       {/* Overlay */}
@@ -74,7 +79,7 @@ export default function Sidebar({
         {/* Navigation */}
 
         <nav className="flex-1 overflow-y-auto px-5 space-y-2">
-          {sidebarItems.map((item) => (
+          {navigationItems.map((item) => (
             <SidebarItem
               key={item.title}
               item={item}
@@ -85,7 +90,7 @@ export default function Sidebar({
         {/* Logout */}
 
         <div className="border-t border-border p-5">
-          <SidebarItem item={logoutItem} />
+          <SidebarItem item={logoutItem} onClick={clearAdminSession} />
         </div>
 
         {/* Footer */}
