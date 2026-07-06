@@ -24,9 +24,9 @@ export default function ProfileLinkCard({
   };
 
   return (
-    <div className="card mt-5 p-5">
+    <div className="card mt-0 p-4">
 
-      <div className="flex items-center gap-2 mb-4">
+      <div className="flex items-center gap-2 mb-3">
         <Link2 size={18} className="text-primary" />
 
         <h3 className="font-semibold text-text">

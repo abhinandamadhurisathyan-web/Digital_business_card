@@ -18,7 +18,7 @@ export default function QrCard({
         <img
           src={QrImage}
           alt="QR Code"
-          className="w-52 h-52 object-contain"
+          className="w-60 h-60 object-contain"
         />
       </div>
 
@@ -34,7 +34,7 @@ export default function QrCard({
 
       {/* Buttons */}
 
-      <div className="flex gap-4 mt-8 w-full">
+      <div className="flex gap-4 mt-8 w-full justify-center">
 
         <Button
           text="Download"
@@ -45,7 +45,6 @@ export default function QrCard({
         <Button
           text="Email QR"
           icon={<Mail size={24} />}
-          variant="secondary"
           onClick={onEmail}
         />
 
