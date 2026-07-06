@@ -21,7 +21,7 @@ export default function AdminShell({ children }: AdminShellProps) {
 
       <div className="flex min-w-0 flex-1 flex-col">
         <TopBar
-          employeeName="Elena Thorne"
+          employeeName="Alex Rivera"
           designation="Enterprise Admin"
           profileImage={profilePic}
           onMenuClick={() => setSidebarOpen(true)}

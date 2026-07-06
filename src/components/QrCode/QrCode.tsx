@@ -10,6 +10,7 @@ import QrImage from "../../assets/QrImage.svg";
 export default function QRCard({
   employeeName,
   designation,
+  qrUrl,
   onEmail,
 }: QRCardProps) {
 
@@ -53,7 +54,7 @@ export default function QRCard({
         <div className="flex flex-col items-center">
           <div className="rounded-xl border-2 border-primary p-3 bg-white">
             <img
-              src={QrImage}
+              src={qrUrl || QrImage}
               alt="QR Code"
               className="w-60 h-60 object-contain"
             />

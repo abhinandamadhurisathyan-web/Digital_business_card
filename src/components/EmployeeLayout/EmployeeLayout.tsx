@@ -26,8 +26,8 @@ const isScrollable =
 
       <div className="flex flex-1 flex-col overflow-hidden">
         <TopBar
-          employeeName="Elena Thorne"
-          designation="Enterprise Admin"
+          employeeName="Alex Rivera"
+          designation="Senior Technical Consultant"
           profileImage={profilePic}
           onMenuClick={() => setSidebarOpen(true)}
         />
