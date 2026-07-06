@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Plus, Save, X } from "lucide-react";
 
 import AdminShell from "../../components/AdminShell";
 import PageHeader from "../../components/PageHeader/PageHeader";
+import FlipCardContainer from "../../components/Flipcardcontainer";
 
 interface OrganizationSettings {
   category: string;
@@ -49,6 +50,8 @@ const defaultOrganizationSettings: OrganizationSettings = {
 function Organization() {
   const [organizationSettings, setOrganizationSettings] = useState<OrganizationSettings>(defaultOrganizationSettings);
   const [expertiseDraft, setExpertiseDraft] = useState("");
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [isEditing, setIsEditing] = useState(false);
 
   function handleOrganizationFieldChange(field: keyof OrganizationSettings, value: string) {
     setOrganizationSettings((previousSettings) => ({
@@ -85,14 +88,51 @@ function Organization() {
   return (
     <AdminShell>
       <div className="w-full">
-        <PageHeader title="Organization" subtitle="Manage company information, card details and contact links." />
+        <div className="mb-6 flex items-center justify-between">
+        <PageHeader
+          title="Organization"
+          subtitle="Manage company information, card details and contact links."
+        />
+        {!isEditing ? (
+          <button
+            type="button"
+            onClick={() => setIsEditing(true)}
+            className="rounded-md border border-primary px-4 py-2 text-sm font-medium text-primary transition hover:bg-primary hover:text-white"
+          >
+            Edit
+          </button>
+        ) : (
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={() => setIsEditing(false)}
+              className="rounded-md border border-border px-4 py-2 text-sm"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              className="btn-primary flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium"
+            >
+              <Save className="h-4 w-4" />
+              Save
+            </button>
+          </div>
+        )}
+      </div>
 
         <section className="grid gap-6 xl:grid-cols-[1.08fr_0.92fr] xl:items-stretch">
           <div className="card flex h-full flex-col p-6 sm:p-8">
             <div className="mb-6">
-              <p className="text-2xl font-bold text-primary">Company Information</p>
-              <p className="mt-1 text-sm text-text-secondary">Update your organization details. These will be visible on employee cards.</p>
-            </div>
+  <div>
+    <p className="text-2xl font-bold text-primary">
+      Company Information
+    </p>
+    <p className="mt-1 text-sm text-text-secondary">
+      Update your organization details. These will be visible on employee cards.
+    </p>
+  </div>
+</div>
 
             <div className="flex flex-1 flex-col gap-4">
               <div className="grid gap-4 md:grid-cols-[118px_1fr] md:items-start">
@@ -108,10 +148,19 @@ function Organization() {
                   <div className="space-y-1">
                     <p className="text-sm font-semibold text-text">{organizationSettings.logoName}</p>
                     <p className="text-xs text-text-secondary">{organizationSettings.logoMeta}</p>
-                    <button type="button" className="inline-flex items-center gap-2 rounded-lg border border-primary/25 bg-primary/5 px-3 py-1.5 text-sm font-medium text-primary transition hover:bg-primary/10">
+                    <button type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    disabled={!isEditing} 
+                    className="inline-flex items-center gap-2 rounded-lg border border-primary/25 bg-primary/5 px-3 py-1.5 text-sm font-medium text-primary transition hover:bg-primary/10">
                       <span className="text-base leading-none">↻</span>
                       Change Logo
                     </button>
+                    <input
+  ref={fileInputRef}
+  type="file"
+  accept="image/*"
+  className="hidden"
+/>
                   </div>
                 </div>
               </div>
@@ -138,13 +187,16 @@ function Organization() {
                       <textarea
                         value={value}
                         rows={4}
+                        disabled={!isEditing}
                         onChange={(event) => handleOrganizationFieldChange(field as keyof OrganizationSettings, event.target.value)}
                         className="w-full rounded-md border border-border bg-white px-3 py-2.5 text-sm text-text outline-none transition placeholder:text-text-secondary focus:border-primary focus:ring-4 focus:ring-primary/10"
+                        disabled={!isEditing}
                       />
                     ) : controlType === "select" ? (
                       <select
                         value={value}
                         onChange={(event) => handleOrganizationFieldChange(field as keyof OrganizationSettings, event.target.value)}
+                        disabled={!isEditing}
                         className="w-full rounded-md border border-border bg-white px-3 py-2.5 text-sm text-text outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10"
                       >
                         {field === "industry" ? (
@@ -173,20 +225,23 @@ function Organization() {
                       <input
                         value={value}
                         onChange={(event) => handleOrganizationFieldChange(field as keyof OrganizationSettings, event.target.value)}
+                        disabled={!isEditing}
                         className="w-full rounded-md border border-border bg-white px-3 py-2.5 text-sm text-text outline-none transition placeholder:text-text-secondary focus:border-primary focus:ring-4 focus:ring-primary/10"
+                        disabled={!isEditing}
                       />
                     )}
                   </div>
                 );
               })}
 
-              <button type="button" className="btn-primary mt-auto flex w-full items-center justify-center gap-2 rounded-md py-2.5 text-sm font-medium">
+              {isEditing && (
+                <button type="button" className="hidden">
                 <Save className="h-4 w-4" />
                 Save Details
               </button>
+                )}
             </div>
           </div>
-
           <div className="flex h-full flex-col space-y-6">
             <div className="card flex flex-1 flex-col p-6 sm:p-8">
               <p className="text-2xl font-bold text-primary">Company Card Details</p>
@@ -212,6 +267,7 @@ function Organization() {
                     value={organizationSettings.companyBio}
                     onChange={(event) => handleOrganizationFieldChange("companyBio", event.target.value)}
                     rows={4}
+                    disabled={!isEditing}
                     placeholder="Enter a short company description..."
                     className="w-full rounded-md border border-border bg-white px-3 py-2.5 text-sm text-text outline-none transition placeholder:text-text-secondary focus:border-primary focus:ring-4 focus:ring-primary/10"
                   />
@@ -224,7 +280,7 @@ function Organization() {
                     {organizationSettings.expertise.map((item) => (
                       <span key={item} className="inline-flex items-center gap-1 rounded-sm bg-primary px-2 py-0.5 text-[11px] font-semibold text-white shadow-sm">
                         {item}
-                        <button type="button" onClick={() => removeOrganizationExpertise(item)} className="leading-none text-white/90 hover:text-white" aria-label={`Remove ${item}`}>
+                        <button type="button" onClick={() => removeOrganizationExpertise(item)} disabled={!isEditing} className="leading-none text-white/90 hover:text-white" aria-label={`Remove ${item}`}>
                           <X className="h-3 w-3" />
                         </button>
                       </span>
@@ -234,6 +290,7 @@ function Organization() {
                   <div className="mt-2 flex items-center gap-2 rounded-md border border-border bg-white px-3 py-2.5">
                     <input
                       value={expertiseDraft}
+                      disabled={!isEditing}
                       onChange={(event) => setExpertiseDraft(event.target.value)}
                       onKeyDown={(event) => {
                         if (event.key === "Enter") {
@@ -245,7 +302,7 @@ function Organization() {
                       className="min-w-0 flex-1 bg-transparent text-sm text-text outline-none placeholder:text-text-secondary"
                     />
 
-                    <button type="button" onClick={addOrganizationExpertise} className="flex h-5 w-5 items-center justify-center rounded-full border border-primary text-primary transition hover:bg-primary hover:text-white">
+                    <button type="button" onClick={addOrganizationExpertise} disabled={!isEditing} className="flex h-5 w-5 items-center justify-center rounded-full border border-primary text-primary transition hover:bg-primary hover:text-white">
                       <Plus className="h-3.5 w-3.5" />
                     </button>
                   </div>
@@ -257,15 +314,17 @@ function Organization() {
                     value={organizationSettings.companyInfo}
                     onChange={(event) => handleOrganizationFieldChange("companyInfo", event.target.value)}
                     rows={4}
+                    disabled={!isEditing}
                     placeholder="Additional details like registration numbers..."
                     className="w-full rounded-md border border-border bg-white px-3 py-2.5 text-sm text-text outline-none transition placeholder:text-text-secondary focus:border-primary focus:ring-4 focus:ring-primary/10"
                   />
                 </div>
 
-                <button type="button" className="btn-primary mt-auto flex w-full items-center justify-center gap-2 rounded-md py-2.5 text-sm font-medium">
+                {isEditing && (
+                <button type="button" className="hidden">
                   <Save className="h-4 w-4" />
                   Save Details
-                </button>
+                </button>)}
               </div>
             </div>
 
@@ -291,10 +350,11 @@ function Organization() {
                   />
                 </div>
 
-                <button type="button" className="btn-primary mt-auto flex w-full items-center justify-center gap-2 rounded-md py-2.5 text-sm font-medium">
+                {isEditing && (
+                <button type="button" className="hidden">
                   <Save className="h-4 w-4" />
                   Save Links
-                </button>
+                </button>)}
               </div>
             </div>
           </div>
