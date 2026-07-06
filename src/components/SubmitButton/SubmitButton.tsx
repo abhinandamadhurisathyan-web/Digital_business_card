@@ -15,7 +15,7 @@ export default function Button({
 }: ButtonProps) {
    const sizeStyles = {
     small: "w-24 px-4 py-2 text-sm h-10",
-    medium: "w-32 px-6 py-3 text-base h-12",
+    medium: "w-40 px-6 py-3 text-base h-12",
     large: "w-50 px-8 py-4 text-lg h-14",
     full: "w-full px-6 py-3 text-base h-12",
   };

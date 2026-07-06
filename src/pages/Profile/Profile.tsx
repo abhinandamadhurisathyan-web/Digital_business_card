@@ -1,4 +1,3 @@
-import EmployeeLayout from "../../components/EmployeeLayout/EmployeeLayout";
 import ProfileHeader from "../../components/ProfileHeader/ProfileHeader";
 import ProfileInfoCard from "../../components/ProfileInfoCard/ProfileInfoCard";
 import ProfessionalLinksCard from "../../components/ProfessionalLinksCard/ProfessionalLinksCard";
@@ -10,8 +9,7 @@ import profilePic from "../../assets/profilePic.jpg";
 
 export default function Profile() {
   return (
-    <EmployeeLayout>
-
+    <>
       <ProfileHeader
         title="My Profile"
         subtitle="Update your professional identity and contact details."
@@ -20,8 +18,10 @@ export default function Profile() {
 
       {/* Main Content */}
 
-      <div className="max-w-5xl mx-auto space-y-8">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
 
+        {/* Left - Basic Information */}
+        <div className="xl:col-span-2">
           <ProfileInfoCard
             profileImage={profilePic}
             fullName="Alex Rivera"
@@ -29,41 +29,43 @@ export default function Profile() {
             email="alex.rivera@tarento.com"
             phone="+91 9876543210"
             ibu="Build"
-            location="Bengaluru"
+            location="Bengaluru, India"
           />
-            <AboutCard
-              about="Passionate technology consultant with over 8 years of experience delivering enterprise digital transformation initiatives across cloud, AI, and customer experience domains. Experienced in leading cross-functional teams and building scalable digital products."
-            />
+        </div>
 
           <ProfessionalLinksCard
             linkedin="https://linkedin.com/in/alexrivera"
-            github="https://github.com/alexrivera"
             portfolio="https://alexrivera.dev"
           />
 
         </div>
 
-      {/* Footer Buttons */}
-
-      <div className="mt-10 flex flex-col sm:flex-row justify-end gap-4">
-
-        <div className="sm:w-52">
-          <Button
-            text="Save Changes"
-            variant="secondary"
-            size="large"
-          />
-        </div>
-
-        <div className="sm:w-64">
-          <Button
-            text="Submit for Approval"
-            size="large"
-          />
-        </div>
-
+      <div className="mt-8">
+        <AboutCard
+          about="Passionate Product Designer with over 8 years of experience in creating human-centric digital experiences. I specialize in bridging the gap between complex engineering requirements and intuitive user interfaces. At Tarento, I focus on the internal digital ecosystem, ensuring our tools are as powerful as they are beautiful. When I’m not pushing pixels, you’ll find me exploring organic architecture or hiking in the Western Ghats."
+        />
       </div>
 
-    </EmployeeLayout>
+      {/* Footer Buttons */}
+
+      <div className="mt-10 flex justify-center">
+        <div className="flex flex-col sm:flex-row items-center gap-4">
+          <div className="w-full sm:w-52">
+            <Button
+              text="Save Changes"
+              variant="secondary"
+              size="large"
+            />
+          </div>
+
+          <div className="w-full sm:w-64">
+            <Button
+              text="Submit"
+              size="large"
+            />
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
