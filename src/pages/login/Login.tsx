@@ -70,8 +70,9 @@ export default function Login() {
             </button>
 
           </div>
-
+          <div className="flex justify-center">
           <Button onClick={handleSignIn} text="Sign In" />
+            </div>
           <p className="text-center mt-10 text-gray-500">
 
             Don't have an account?
@@ -94,12 +95,6 @@ export default function Login() {
       <div className="hidden lg:flex bg-[#EFE8DD] justify-center items-center p-12">
 
         <div className="max-w-lg">
-
-          <div className="bg-white rounded-3xl shadow-xl p-6">
-
-          
-
-          </div>
 
           <p className="mt-10 text-center italic text-3xl font-serif text-gray-700">
 

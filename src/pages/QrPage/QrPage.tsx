@@ -6,6 +6,18 @@ import Button from "../../components/SubmitButton/SubmitButton";
 import PageHeader from "../../components/PageHeader/PageHeader";
 
 export default function QRPage() {
+  const employeeName = "Arjun Mehta";
+  const employeeEmail = "arjun.mehta@tarento.com";
+
+  const handleEmail = () => {
+    const subject = encodeURIComponent("Your QR Code");
+    const body = encodeURIComponent(
+      `Hi ${employeeName},\n\nPlease find your QR code attached in this email.\n\nBest regards,\nTarento`,
+    );
+
+    window.location.href = `mailto:${employeeEmail}?subject=${subject}&body=${body}`;
+  };
+
   return (
     <main className="flex-1 p-6 lg:p-10">
 
@@ -16,11 +28,13 @@ export default function QRPage() {
         {/* Left */}
 
         <div className="w-full max-w-md space-y-6">
-
-          <QRCard
-            employeeName="Arjun Mehta"
-            designation="Senior Technical Consultant"
-          />
+          <div id="qr-card">
+            <QRCard
+              employeeName={employeeName}
+              designation="Senior Technical Consultant"
+              onEmail={handleEmail}
+            />
+          </div>
 
           <ProfileLinkCard
             link="tarento.com/profile/arjun-mehta"
@@ -30,7 +44,7 @@ export default function QRPage() {
 
         {/* Right */}
 
-        <div className="card p-8">
+        <div className="card p-8 h-full">
 
           <h2 className="text-3xl font-bold text-primary mb-8">
             Customize Your QR
