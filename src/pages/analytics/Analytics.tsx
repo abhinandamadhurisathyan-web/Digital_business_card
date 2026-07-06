@@ -1,6 +1,8 @@
 import { useState, type PointerEvent } from "react";
 import { ChevronRight, Eye, Share2, TrendingUp } from "lucide-react";
 
+import PageHeader from "../../components/PageHeader/PageHeader";
+
 type TimeRange = "Today" | "Week" | "Month" | "Year" | "All Time";
 
 type ActivityType = "view" | "share";
@@ -331,13 +333,8 @@ function Analytics() {
   };
 
   return (
-      <div className="mx-auto max-w-[1320px] space-y-4">
-        <div className="flex flex-wrap items-start justify-between gap-4">
-          <div>
-            <p className="text-2xl font-semibold text-text">Analytics</p>
-            <p className="mt-1 text-sm text-text-secondary">Track how your digital business card is performing.</p>
-          </div>
-        </div>
+      <div className="w-full space-y-6">
+        <PageHeader title="Analytics" subtitle="Track how your digital business card is performing." />
 
         <div className="flex flex-wrap gap-2 rounded-md border border-border bg-surface p-1">
           {timeRanges.map((range) => (
@@ -353,13 +350,13 @@ function Analytics() {
         </div>
 
         <section className="card overflow-hidden">
-          <div className="border-b border-border-light px-4 py-4 sm:px-5">
-            <p className="text-sm font-semibold text-text">{currentData.title}</p>
+          <div className="border-b border-border-light px-6 py-5">
+            <p className="text-2xl font-bold text-primary">{currentData.title}</p>
             <p className="mt-1 text-xs text-text-secondary">{currentData.subtitle}</p>
           </div>
 
-          <div className="relative overflow-hidden px-3 pb-4 pt-3 sm:px-4">
-            <div className="relative h-[290px] rounded-2xl border border-border-light bg-[#fdfdfd]">
+          <div className="relative overflow-hidden p-6">
+            <div className="relative h-[290px] rounded-xl border border-border-light bg-[#fdfdfd]">
               <svg
                 viewBox="0 0 920 290"
                 className="h-full w-full touch-none"
@@ -414,12 +411,12 @@ function Analytics() {
           </div>
         </section>
 
-        <section className="grid gap-3 md:grid-cols-3">
+        <section className="grid gap-6 md:grid-cols-3">
           {currentData.summaryCards.map((card: SummaryCardConfig) => {
             const Icon = card.icon;
 
             return (
-              <article key={card.label} className="card p-4">
+              <article key={card.label} className="card p-6">
                 <div className="flex items-start gap-3">
                   <div className={`flex h-9 w-9 items-center justify-center rounded-xl ${card.iconWrap}`}>
                     <Icon className="h-4 w-4" />
@@ -438,9 +435,9 @@ function Analytics() {
         </section>
 
         <section className="card overflow-hidden">
-          <div className="flex items-center justify-between gap-3 border-b border-border-light px-4 py-4 sm:px-5">
+          <div className="flex items-center justify-between gap-3 border-b border-border-light px-6 py-5">
             <div>
-              <p className="text-sm font-semibold text-text">Recent Activity</p>
+              <p className="text-2xl font-bold text-primary">Recent Activity</p>
             </div>
 
             <button type="button" className="inline-flex items-center gap-1 text-sm font-medium text-primary transition hover:text-primary-dark">
@@ -454,7 +451,7 @@ function Analytics() {
               const Icon = item.type === "view" ? Eye : Share2;
 
               return (
-                <div key={`${item.title}-${item.time}`} className={`flex items-center gap-4 px-4 py-4 ${index !== activityItems.length - 1 ? "border-b border-border-light" : ""}`}>
+                <div key={`${item.title}-${item.time}`} className={`flex items-center gap-4 px-6 py-4 ${index !== activityItems.length - 1 ? "border-b border-border-light" : ""}`}>
                   <div className={`flex h-9 w-9 items-center justify-center rounded-xl ${iconClass}`}>
                     <Icon className="h-4 w-4" />
                   </div>

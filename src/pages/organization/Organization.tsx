@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Plus, Save, X } from "lucide-react";
 
 import AdminShell from "../../components/AdminShell";
+import PageHeader from "../../components/PageHeader/PageHeader";
 
 interface OrganizationSettings {
   category: string;
@@ -83,11 +84,13 @@ function Organization() {
 
   return (
     <AdminShell>
-      <div className="mx-auto max-w-[1320px]">
+      <div className="w-full">
+        <PageHeader title="Organization" subtitle="Manage company information, card details and contact links." />
+
         <section className="grid gap-6 xl:grid-cols-[1.08fr_0.92fr] xl:items-stretch">
-          <div className="card flex h-full flex-col p-5 sm:p-6">
-            <div className="mb-5">
-              <p className="text-xl font-semibold text-text">Company Information</p>
+          <div className="card flex h-full flex-col p-6 sm:p-8">
+            <div className="mb-6">
+              <p className="text-2xl font-bold text-primary">Company Information</p>
               <p className="mt-1 text-sm text-text-secondary">Update your organization details. These will be visible on employee cards.</p>
             </div>
 
@@ -185,10 +188,10 @@ function Organization() {
           </div>
 
           <div className="flex h-full flex-col space-y-6">
-            <div className="card flex flex-1 flex-col p-5 sm:p-6">
-              <p className="text-lg font-semibold text-text">Company Card Details</p>
+            <div className="card flex flex-1 flex-col p-6 sm:p-8">
+              <p className="text-2xl font-bold text-primary">Company Card Details</p>
 
-              <div className="mt-4 flex flex-1 flex-col gap-4">
+              <div className="mt-6 flex flex-1 flex-col gap-4">
                 <div>
                   <label className="mb-2 block text-sm text-text-secondary">Category</label>
                   <select
@@ -266,10 +269,10 @@ function Organization() {
               </div>
             </div>
 
-            <div className="card flex flex-1 flex-col p-5 sm:p-6">
-              <p className="text-lg font-semibold text-text">Links & Contact</p>
+            <div className="card flex flex-1 flex-col p-6 sm:p-8">
+              <p className="text-2xl font-bold text-primary">Links & Contact</p>
 
-              <div className="mt-4 flex flex-1 flex-col gap-4">
+              <div className="mt-6 flex flex-1 flex-col gap-4">
                 <div>
                   <label className="mb-2 block text-sm text-text-secondary">LinkedIn Profile</label>
                   <input
