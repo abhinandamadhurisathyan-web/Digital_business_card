@@ -190,7 +190,7 @@ function Organization() {
                         disabled={!isEditing}
                         onChange={(event) => handleOrganizationFieldChange(field as keyof OrganizationSettings, event.target.value)}
                         className="w-full rounded-md border border-border bg-white px-3 py-2.5 text-sm text-text outline-none transition placeholder:text-text-secondary focus:border-primary focus:ring-4 focus:ring-primary/10"
-                        disabled={!isEditing}
+                        
                       />
                     ) : controlType === "select" ? (
                       <select
@@ -227,7 +227,7 @@ function Organization() {
                         onChange={(event) => handleOrganizationFieldChange(field as keyof OrganizationSettings, event.target.value)}
                         disabled={!isEditing}
                         className="w-full rounded-md border border-border bg-white px-3 py-2.5 text-sm text-text outline-none transition placeholder:text-text-secondary focus:border-primary focus:ring-4 focus:ring-primary/10"
-                        disabled={!isEditing}
+                       
                       />
                     )}
                   </div>
