@@ -1,17 +1,21 @@
-import type { ReactNode } from "react";
+import type { ReactNode, ChangeEvent } from "react";
 
 interface InputFieldProps {
   label: string;
   type?: string;
-  placeholder: string;
-  icon: ReactNode;
+  placeholder?: string;
+  value?: string;
+  icon?: ReactNode;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function InputField({
   label,
   type = "text",
-  placeholder,
+  placeholder = "",
+  value,
   icon,
+  onChange,
 }: InputFieldProps) {
   return (
     <div className="mb-5">
@@ -20,10 +24,16 @@ export default function InputField({
       </label>
 
       <div className="flex items-center border rounded-xl px-4 py-3">
-        <span className="text-gray-400 mr-3">{icon}</span>
+        {icon && (
+          <span className="text-gray-400 mr-3">
+            {icon}
+          </span>
+        )}
 
         <input
           type={type}
+          value={value}
+          onChange={onChange}
           placeholder={placeholder}
           className="flex-1 outline-none bg-transparent"
         />

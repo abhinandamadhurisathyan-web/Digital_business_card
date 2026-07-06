@@ -2,9 +2,11 @@
 import { Mail, Lock } from "lucide-react";
 
 import InputField from "../../components/InputField";
-import Button from "../../components/Button";
+import Button from "../../components/SubmitButton/SubmitButton";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen grid lg:grid-cols-2">
 
@@ -53,15 +55,17 @@ export default function Login() {
 
           </div>
 
-          <Button text="Sign In" />
-
+          <Button onClick={() => navigate("/qr-code")} text="Sign In" />
           <p className="text-center mt-10 text-gray-500">
 
             Don't have an account?
 
-            <span className="text-green-700 ml-1 cursor-pointer">
-              Register
-            </span>
+            <Link
+                to="/register"
+                className="text-green-700 font-medium hover:underline"
+            >
+                Register
+            </Link>
 
           </p>
 
