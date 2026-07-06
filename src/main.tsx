@@ -43,6 +43,7 @@ createRoot(document.getElementById("root")!).render(
 
         {/* Auth Routes */}
         <Route path="/login" element={<Login />} />
+        <Route element={<EmployeeLayout />}>
         <Route
           path="/dashboard"
           element={
@@ -51,9 +52,12 @@ createRoot(document.getElementById("root")!).render(
             </RequireAdmin>
           }
         />
+        </Route>
+        
         <Route path="/qr-code" element={<QrPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
+        <Route element={<EmployeeLayout />}>
         <Route
           path="/organization"
           element={
@@ -62,6 +66,8 @@ createRoot(document.getElementById("root")!).render(
             </RequireAdmin>
           }
         />
+        </Route>
+        
       </Routes>
     </BrowserRouter>
   </StrictMode>

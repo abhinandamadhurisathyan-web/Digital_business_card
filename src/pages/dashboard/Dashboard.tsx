@@ -76,7 +76,7 @@ function Dashboard() {
   const visibleRows = tabRows[activeTab];
 
   return (
-    <AdminShell>
+    
       <div className="w-full space-y-6">
         <PageHeader title="Dashboard" subtitle="Review employees, updates and verification requests." />
 
@@ -183,7 +183,7 @@ function Dashboard() {
           </div>
         </section>
       </div>
-    </AdminShell>
+    
   );
 }
 

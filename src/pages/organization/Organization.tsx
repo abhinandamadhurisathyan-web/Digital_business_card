@@ -4,6 +4,7 @@ import { Plus, Save, X } from "lucide-react";
 import AdminShell from "../../components/AdminShell";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import FlipCardContainer from "../../components/Flipcardcontainer";
+import { toast } from "sonner";
 
 interface OrganizationSettings {
   category: string;
@@ -86,7 +87,7 @@ function Organization() {
   }
 
   return (
-    <AdminShell>
+    
       <div className="w-full">
         <div className="mb-6 flex items-center justify-between">
         <PageHeader
@@ -97,7 +98,7 @@ function Organization() {
           <button
             type="button"
             onClick={() => setIsEditing(true)}
-            className="rounded-md border border-primary px-4 py-2 text-sm font-medium text-primary transition hover:bg-primary hover:text-white"
+            className="btn-primary rounded-md border border-primary px-4 py-2 text-sm font-medium  transition hover:bg-primary hover:text-white"
           >
             Edit
           </button>
@@ -106,16 +107,21 @@ function Organization() {
             <button
               type="button"
               onClick={() => setIsEditing(false)}
-              className="rounded-md border border-border px-4 py-2 text-sm"
+              className=" rounded-md border border-border px-4 py-2 text-sm"
             >
               Cancel
             </button>
             <button
               type="button"
               className="btn-primary flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium"
+              onClick={() => {
+                setIsEditing(false);
+                toast.success("Organization Details Saved Successfully!");
+              }}
             >
               <Save className="h-4 w-4" />
               Save
+              
             </button>
           </div>
         )}
@@ -360,7 +366,7 @@ function Organization() {
           </div>
         </section>
       </div>
-    </AdminShell>
+    
   );
 }
 
