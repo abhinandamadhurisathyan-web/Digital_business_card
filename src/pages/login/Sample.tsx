@@ -1,10 +1,17 @@
+import BusinessCard from "../../components/BuisnessCard";
+import BusinessCardBack from "../../components/BusinessCardBack";
+import BusinessCardFront from "../../components/BusinesscardFront";
+import FlipCardContainer from "../../components/Flipcardcontainer";
+
+
 function Sample() {
+  
+  
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <h1 className="text-4xl font-bold text-blue-600">
-        Hello, World!
-      </h1>
-    </div>
+    
+        <FlipCardContainer/>
+
   );
 }
 
