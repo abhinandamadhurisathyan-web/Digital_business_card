@@ -4,6 +4,7 @@ interface ButtonProps {
   variant?: "primary" | "secondary";
   onClick?: () => void;
   size?: "small" | "medium" | "large"| "full";
+  className?: string;
 }
 
 export default function Button({
@@ -12,6 +13,7 @@ export default function Button({
   variant = "primary",
   onClick,
   size = "medium",
+  className = "",
 }: ButtonProps) {
    const sizeStyles = {
     small: "w-24 px-4 py-2 text-sm h-10",
@@ -36,7 +38,7 @@ export default function Button({
       ? "btn-primary"
       : "btn-secondary"
   }
-`}
+` + (className ? ` ${className}` : "")}
     >
       {icon}
       <span>{text}</span>

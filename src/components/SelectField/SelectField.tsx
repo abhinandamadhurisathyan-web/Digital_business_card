@@ -16,7 +16,7 @@ export default function SelectField({
   onChange,
 }: SelectFieldProps) {
   return (
-    <div className="mb-5">
+    <div className="mb-5 min-w-0">
       <label className="block text-sm mb-2 text-gray-700">
         {label}
       </label>

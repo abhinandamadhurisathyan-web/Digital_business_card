@@ -20,7 +20,7 @@ export default function InputField({
   onChange,
 }: InputFieldProps) {
   return (
-    <div className="mb-2">
+    <div className="mb-2 w-full">
       <label className="mb-2 block text-sm font-medium text-gray-700">
         {label}
       </label>
@@ -44,7 +44,7 @@ export default function InputField({
           disabled={disabled}
           onChange={onChange}
           placeholder={placeholder}
-          className={`flex-1 bg-transparent outline-none ${
+          className={`min-w-0 flex-1 bg-transparent outline-none ${
             disabled
               ? "cursor-default text-gray-800"
               : "text-gray-900"

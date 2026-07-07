@@ -47,10 +47,10 @@ export default function ProfileInfoCard({
   };
 
   return (
-    <div className="card p-8">
-      {/* Header */}
+    <div className="card p-5 sm:p-6 lg:p-8">
+        {/* Header */}
       <div>
-        <h2 className="text-2xl font-bold text-primary">
+        <h2 className="text-xl sm:text-2xl font-bold text-primary">
           Basic Information
         </h2>
 
@@ -59,21 +59,20 @@ export default function ProfileInfoCard({
         </p>
       </div>
 
-      <div className="mt-10 grid gap-10 xl:grid-cols-[260px_minmax(0,1fr)] items-start">
-        {/* Profile Image */}
-        <div className="relative self-start">
+  <div className="mt-10 grid gap-8 lg:grid-cols-[220px_minmax(0,1fr)] items-start">        
+    {/* Profile Image */}
+        <div className="relative mx-auto lg:mx-0 self-start">
           <img
             src={image}
             alt="Profile"
-            className="h-40 w-40 rounded-[1.5rem] border-4 border-primary object-cover shadow-sm"
-          />
+            className="h-32 w-32 sm:h-36 sm:w-36 xl:h-40 xl:w-40 rounded-[1.5rem] border-4 border-primary object-cover shadow-sm"          />
 
           {editing && (
             <>
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="absolute -bottom-1 -right-1 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white shadow-md hover:bg-primary/90 transition"
+                className="absolute -bottom-0 -right-0 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white shadow-md hover:bg-primary/90 transition"
               >
                 <Camera size={18} />
               </button>
@@ -90,8 +89,8 @@ export default function ProfileInfoCard({
         </div>
 
         {/* Fields */}
-        <div className="grid gap-2 sm:grid-cols-2">
-          <InputField
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <InputField
             label="Full Name"
             value={profile.fullName}
             disabled={!editing}

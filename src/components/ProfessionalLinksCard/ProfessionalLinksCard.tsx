@@ -21,24 +21,24 @@ export default function ProfessionalLinksCard({
   });
 
   return (
-    <div className="card p-8">
+    <div className="card p-4 sm:p-6 lg:p-8">
       <div>
-        <h2 className="text-2xl font-bold text-primary">
+        <h2 className="text-xl font-bold text-primary sm:text-2xl">
           Professional Links
         </h2>
 
-        <p className="mt-1 text-sm text-text-secondary">
+        <p className="mt-1 text-sm leading-6 text-text-secondary">
           Your key professional profiles in one place.
         </p>
       </div>
 
-      <div className="mt-6 space-y-6">
+      <div className="mt-6 space-y-5 sm:space-y-6">
         <div className="flex items-start gap-4">
-          <div className="mt-8 grid h-12 w-12 place-items-center rounded-3xl bg-white text-primary shadow-sm">
+          <div className="flex-none h-12 w-12 flex items-center justify-center rounded-3xl bg-white text-primary shadow-sm mt-6 sm:mt-0 lg:mt-4">
             <FaLinkedin size={18} />
           </div>
 
-          <div className="flex-1">
+          <div className="flex-1 min-w-0">
             <InputField
               label="LinkedIn"
               value={links.linkedin}
@@ -54,11 +54,11 @@ export default function ProfessionalLinksCard({
         </div>
 
         <div className="flex items-start gap-4">
-          <div className="mt-8 grid h-12 w-12 place-items-center rounded-3xl bg-white text-primary shadow-sm">
+          <div className="flex-none h-12 w-12 flex items-center justify-center rounded-3xl bg-white text-primary shadow-sm mt-6 sm:mt-0 lg:mt-4">
             <Globe size={18} />
           </div>
 
-          <div className="flex-1">
+          <div className="flex-1 min-w-0">
             <InputField
               label="Portfolio"
               value={links.portfolio}

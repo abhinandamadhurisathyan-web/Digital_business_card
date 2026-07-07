@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 import Sidebar from "../sideBar/Sidebar";
 import TopBar from "../TopBar/TopBar";
@@ -11,10 +11,6 @@ import { getAdminSession } from "../../lib/adminSession";
 export default function EmployeeLayout() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const isAdmin = Boolean(getAdminSession());
-  const location = useLocation();
-
-const isScrollable =
-  location.pathname !== "/profile";
 
   return (
     <div className="flex h-screen overflow-hidden bg-background">
@@ -32,11 +28,7 @@ const isScrollable =
           onMenuClick={() => setSidebarOpen(true)}
         />
 
-        <main
-          className={`flex-1 p-6 lg:p-10 ${
-            isScrollable ? "overflow-y-auto" : "overflow-hidden"
-          }`}
-        >
+        <main className="flex-1 overflow-y-auto p-6 lg:p-10">
           <Outlet />
         </main>
       </div>

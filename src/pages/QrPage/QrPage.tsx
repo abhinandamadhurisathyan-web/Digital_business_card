@@ -13,6 +13,7 @@ export default function QRPage() {
   const employeeEmail = "alex.rivera@tarento.com";
 
   const [ibu, setIbu] = useState("");
+  const [ibuError, setIbuError] = useState("");
   const [industry, setIndustry] = useState("");
   const [company, setCompany] = useState("");
   const [qrTitle, setQrTitle] = useState("");
@@ -60,6 +61,16 @@ export default function QRPage() {
     }
   };
 
+  const handleGenerateClick = async () => {
+    if (!ibu) {
+      setIbuError("Please select an IBU to generate QR.");
+      return;
+    }
+
+    setIbuError("");
+    await generateQr(true);
+  };
+
   useEffect(() => {
     generateQr(false);
   }, []);
@@ -92,15 +103,22 @@ export default function QRPage() {
           </h2>
 
           <SelectField
-            label="IBU"
+            label="IBU  *"
             value={ibu}
-            onChange={(e) => setIbu(e.target.value)}
+            onChange={(e) => {
+              setIbu(e.target.value);
+              if (e.target.value) setIbuError("");
+            }}
             options={[
               "Buy",
               "Build",
               "Mobility",
             ]}
           />
+
+          {ibuError ? (
+            <p className="mt-2 text-sm text-red-600">{ibuError}</p>
+          ) : null}
 
           <SelectField
             label="Industry"
@@ -115,14 +133,14 @@ export default function QRPage() {
           />
 
           <InputField
-            label="Company (Optional)"
+            label="Company"
             placeholder="Company"
             value={company}
             onChange={(e) => setCompany(e.target.value)}
           />
 
           <InputField
-            label="QR Title (Optional)"
+            label="QR Title"
             placeholder="QR Title"
             value={qrTitle}
             onChange={(e) => setQrTitle(e.target.value)}
@@ -132,7 +150,7 @@ export default function QRPage() {
 
 
           <div className="mt-8">
-            <Button text="Generate QR" size="large" onClick={generateQr} />
+            <Button text="Generate QR" size="large" onClick={handleGenerateClick} />
           </div>
         </div>
       </div>
