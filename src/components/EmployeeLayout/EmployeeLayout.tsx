@@ -13,20 +13,20 @@ export default function EmployeeLayout() {
   const isAdmin = Boolean(getAdminSession());
 
   return (
-    <div className="flex h-screen overflow-hidden bg-background">
-      <Sidebar
-        isOpen={isSidebarOpen}
-        onClose={() => setSidebarOpen(false)}
-        variant={isAdmin ? "admin" : "employee"}
-      />
+<div className="flex h-screen flex-col overflow-hidden bg-background">
+  <TopBar
+    employeeName="Alex Rivera"
+    designation="Senior Technical Consultant"
+    profileImage={profilePic}
+    onMenuClick={() => setSidebarOpen(true)}
+  />
 
-      <div className="flex flex-1 flex-col overflow-hidden">
-        <TopBar
-          employeeName="Alex Rivera"
-          designation="Senior Technical Consultant"
-          profileImage={profilePic}
-          onMenuClick={() => setSidebarOpen(true)}
-        />
+  <div className="flex flex-1 overflow-hidden">
+    <Sidebar
+      isOpen={isSidebarOpen}
+      onClose={() => setSidebarOpen(false)}
+      variant={isAdmin ? "admin" : "employee"}
+    />
 
         <main className="flex-1 overflow-y-auto p-6 lg:p-10">
           <Outlet />

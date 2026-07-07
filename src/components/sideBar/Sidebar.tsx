@@ -1,7 +1,6 @@
 import { X } from "lucide-react";
 
 import SidebarItem from "./SidebarItem";
-import tarento_logo from "../../assets/tarento_logo.svg";
 import { adminSidebarItems, logoutItem, sidebarItems } from "./sideBarData";
 import { clearAdminSession } from "../../lib/adminSession";
 
@@ -31,30 +30,33 @@ export default function Sidebar({
 
       {/* Sidebar */}
 
-      <aside
-        className={`
-          fixed
-          inset-y-0
-          left-0
-          z-50
-          w-64
-          bg-background
-          border-r
-          border-border
-          flex
-          flex-col
-          transition-transform
-          duration-300
-          ${
-            isOpen
-              ? "translate-x-0"
-              : "-translate-x-full"
-          }
+<aside
+  className={`
+  fixed
+inset-y-0
+left-0
 
-          lg:relative
-          lg:translate-x-0
-        `}
-      >
+lg:relative
+    z-50
+    w-64
+    bg-surface
+    border-r
+    border-border
+    flex
+    flex-col
+    transition-transform
+    duration-300
+    ${
+      isOpen
+        ? "translate-x-0"
+        : "-translate-x-full"
+    }
+
+    lg:relative
+    lg:top-0
+    lg:translate-x-0
+  `}
+>
         {/* Mobile Close Button */}
 
         <div className="flex justify-end p-4 lg:hidden">
@@ -64,16 +66,6 @@ export default function Sidebar({
           >
             <X size={24} />
           </button>
-        </div>
-
-        {/* Logo */}
-
-        <div className="p-6">
-          <img
-            src={tarento_logo}
-            alt="Tarento Logo"
-            className="w-40"
-          />
         </div>
 
         {/* Navigation */}

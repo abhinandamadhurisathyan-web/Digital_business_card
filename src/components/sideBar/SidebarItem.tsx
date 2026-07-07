@@ -13,29 +13,39 @@ export default function SidebarItem({
   const Icon = item.icon;
 
   return (
-    <NavLink
-      to={item.path}
-      onClick={onClick}
-      className={({ isActive }) =>
-        `
-        flex
-        items-center
-        gap-3
-        px-4
-        py-3
-        rounded-xl
-        transition
-        ${
-          isActive
-            ? "bg-surface text-primary font-semibold"
-            : "text-text-secondary hover:bg-surface"
-        }
-        `
+<NavLink
+  to={item.path}
+  onClick={onClick}
+  className={({ isActive }) =>
+    `
+      relative
+      flex
+      items-center
+      gap-3
+      px-4
+      py-3
+      rounded-xl
+      transition-all
+      duration-200
+      ${
+        isActive
+          ? "bg-surface-container text-primary font-semibold"
+          : "text-primary hover:bg-surface-container"
       }
-    >
+    `
+  }
+>
+  {({ isActive }) => (
+    <>
+      {isActive && (
+        <span className="absolute left-0 top-2 bottom-2 w-1 rounded-r-full bg-primary" />
+      )}
+
       <Icon size={18} />
 
       <span>{item.title}</span>
-    </NavLink>
+    </>
+  )}
+</NavLink>
   );
 }

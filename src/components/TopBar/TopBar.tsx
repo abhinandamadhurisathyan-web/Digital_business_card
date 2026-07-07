@@ -1,5 +1,6 @@
 import { Bell, Menu } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import tarento_logo from "../../assets/tarento_logo.svg";
 
 interface TopBarProps {
   employeeName: string;
@@ -16,25 +17,32 @@ export default function TopBar({
 }: TopBarProps) {
   const navigate = useNavigate();
   return (
-    <header className="h-20 border-b border-border bg-surface flex items-center justify-between px-6">
+    <header className="relative h-20 border-b border-border bg-surface flex items-center justify-between px-6">
 
       {/* Left Side */}
 
-      <div className="flex items-center gap-4">
+<div className="flex items-center">
+  <button
+    onClick={onMenuClick}
+    className="lg:hidden"
+  >
+    <Menu size={24} />
+  </button>
 
-        {/* Hamburger - Only visible on mobile */}
-
-        <button
-          onClick={onMenuClick}
-          className="lg:hidden"
-        >
-          <Menu size={24} />
-        </button>
-
-
-
-      </div>
-
+  {/* Desktop Logo */}
+  <img
+    src={tarento_logo}
+    alt="Tarento Logo"
+    className="hidden lg:block h-20 w-auto -ml-4"
+  />
+</div>
+<div className="absolute left-1/2 -translate-x-1/2 lg:hidden">
+  <img
+    src={tarento_logo}
+    alt="Tarento Logo"
+    className="h-20 w-auto -ml-4"
+  />
+</div>
       {/* Right Side */}
 
       <div className="flex items-center gap-5">
