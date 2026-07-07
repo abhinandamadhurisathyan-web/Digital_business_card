@@ -72,8 +72,16 @@ const tabRows: Record<TabKey, Array<{ name: string; id: string; role: string; ap
 
 function Dashboard() {
   const [activeTab, setActiveTab] = useState<TabKey>("verification");
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const visibleRows = tabRows[activeTab];
+  const normalizedSearch = searchTerm.trim().toLowerCase();
+  const visibleRows = tabRows[activeTab].filter((row) => {
+    if (!normalizedSearch) return true;
+    return [row.name, row.id, row.role, row.appliedOn]
+      .join(" ")
+      .toLowerCase()
+      .includes(normalizedSearch);
+  });
 
   return (
     
@@ -128,7 +136,13 @@ function Dashboard() {
             <div className="mt-5 flex flex-wrap items-center gap-3 pb-6">
               <div className="flex min-w-0 flex-1 items-center gap-3 rounded-xl border border-border bg-surface-container px-4 py-3">
                 <Search className="h-4 w-4 text-text-secondary" />
-                <input type="text" placeholder="Search by name, employee ID or email..." className="w-full bg-transparent text-sm text-text outline-none placeholder:text-text-secondary" />
+                <input
+                  type="text"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  placeholder="Search by name, employee ID or email..."
+                  className="w-full bg-transparent text-sm text-text outline-none placeholder:text-text-secondary"
+                />
               </div>
 
               <button
