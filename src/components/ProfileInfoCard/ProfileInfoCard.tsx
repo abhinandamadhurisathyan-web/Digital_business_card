@@ -105,7 +105,7 @@ export default function ProfileInfoCard({
           <InputField
             label="Designation"
             value={profile.designation}
-            disabled={!editing}
+            disabled={true}
             onChange={(e) =>
               setProfile({
                 ...profile,
